@@ -7,3 +7,46 @@ select * from clinica;
 select * from medico;
 select * from paciente;
 select * from situacao;
+select * from consulta;
+
+--O administrador poderá cadastrar qualquer tipo de usuário (administrador, paciente ou médico)
+select idUsuario, tituloTipoUsuario, email from Usuario
+inner join tipoUsuario
+on Usuario.idTipoUsuario = tipoUsuario.idTipoUsuario;
+
+--O administrador poderá agendar uma consulta, onde será informado o paciente, data do agendamento e qual médico irá atender a consulta (o médico possuirá sua determinada especialidade)
+select idConsulta, nomePaciente, dataConsulta, nomeMedico from consulta 
+inner join medico
+on medico.idMedico = consulta.idConsulta
+inner join paciente
+on paciente.idPaciente = consulta.idPaciente; 
+
+--O administrador poderá cancelar o agendamento
+select tituloTipoUsuario[situacao], email from Usuario
+inner join tipoUsuario
+on usuario.idTipoUsuario = tipoUsuario.idTipoUsuario
+where email = 'adm@adm.com';
+
+--O administrador deverá informar os dados da clínica (como endereço, horário de funcionamento, CNPJ, nome fantasia e razão social)
+select idClinica, endereco, CNPJ, nomeFantasia, razaoSocial from clinica;
+
+--O médico poderá ver os agendamentos (consultas) associados a ele
+select nomeMedico, nomePaciente, dataConsulta, descricao from consulta 
+inner join  medico
+on medico.idMedico = consulta.idMedico
+inner join paciente
+on paciente.idPaciente = consulta.idMedico
+WHERE medico.idMedico = 3;
+
+--O médico poderá incluir a descrição da consulta que estará vinculada ao paciente (prontuário)
+select nomePaciente, descricao from paciente 
+left join consulta
+on consulta.idConsulta = paciente.idPaciente;
+
+
+--O paciente poderá visualizar suas próprias consultas
+select nomePaciente, dataConsulta, nomeMedico, descricao from paciente
+inner join consulta 
+on consulta.idConsulta = paciente.idPaciente
+inner join medico 
+on medico.idMedico = paciente.idPaciente;
