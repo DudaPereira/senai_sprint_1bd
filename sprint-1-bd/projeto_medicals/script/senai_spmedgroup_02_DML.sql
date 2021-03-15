@@ -41,8 +41,8 @@ values					  ('Acupuntura')
 						 ,('Psiquiatria');
 go
 
-insert into clinica (CNPJ, endereco, nomeFantasia, razaoSocial)
-values				('86400902000130', 'Av. Barão Limeira, 532', 'Clinica Possarle', 'SP Médical Group');
+insert into clinica (CNPJ,horarioAbertura, horarioFechamento, endereco, nomeFantasia, razaoSocial)
+values				('86400902000130','8:30', '21:30', 'Av. Barão Limeira, 532', 'Clinica Possarle', 'SP Médical Group');
 go
 
 insert into medico (idUsuario, idEspecialidade, idClinica, nomeMedico,CRM)

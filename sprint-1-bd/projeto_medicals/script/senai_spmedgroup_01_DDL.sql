@@ -31,6 +31,8 @@ create table clinica
 (
 	idClinica int primary key identity
 	,CNPJ char (18) unique
+	,horarioAbertura time not null 
+	,horarioFechamento time not null 
 	,endereco varchar (150) unique not null
 	,nomeFantasia varchar (100) unique not null
 	,razaoSocial varchar (100) unique not null

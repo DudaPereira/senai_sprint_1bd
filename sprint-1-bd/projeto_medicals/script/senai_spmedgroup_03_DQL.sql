@@ -36,7 +36,7 @@ inner join  medico
 on medico.idMedico = consulta.idMedico
 inner join paciente
 on paciente.idPaciente = consulta.idMedico
-WHERE medico.idMedico = 3;
+WHERE medico.idMedico = 1;
 
 --O médico poderá incluir a descrição da consulta que estará vinculada ao paciente (prontuário)
 select nomePaciente, descricao from paciente 
@@ -50,3 +50,11 @@ inner join consulta
 on consulta.idConsulta = paciente.idPaciente
 inner join medico 
 on medico.idMedico = paciente.idPaciente;
+
+--Converteu a data de nascimento do usuário para o formato (mm-dd-yyyy) na exibição
+SELECT nomePaciente AS Nome, CONVERT (VARCHAR, dataNascimento, 101) AS DataNascimento FROM paciente;
+
+--aqui mostra a quantidade de usuários cadastrados;
+SELECT COUNT (Usuario.idUsuario) AS QuantidadeDeUsuarios  FROM Usuario;
+
+
